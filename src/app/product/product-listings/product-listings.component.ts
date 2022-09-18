@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { products } from 'src/app/products';
+
+type Product = typeof products[0];
 
 @Component({
   selector: 'app-product-list',
@@ -6,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-listings.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  products = [1, 2, 3, 4];
+  products!: Product[]
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.products = products;
+  }
+
+  trackFn(index: any, product: Product) {
+    return product.name;
+  }
 }
