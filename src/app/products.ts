@@ -1,5 +1,6 @@
 export const products = [
   {
+    coverImage: './assets/img/phone-cover.jpg',
     name: 'Phone XL',
     price: 799,
     description: 'A large phone with one of the best screens',
@@ -11,6 +12,7 @@ export const products = [
     headingtext3: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.'
   },
   {
+    coverImage: 'data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==',
     name: 'Phone Mini',
     price: 699,
     description: 'A great phone with one of the best cameras',
@@ -22,6 +24,7 @@ export const products = [
     headingtext3: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.'
   },
   {
+    coverImage: './assets/img/phone-cover.jpg',
     name: 'Phone Standard',
     price: 299,
     description: '',
@@ -33,6 +36,7 @@ export const products = [
     headingtext3: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.'
   },
   {
+    coverImage: './assets/img/phone-cover.jpg',
     name: 'Phone Special',
     price: 999,
     description: '',
