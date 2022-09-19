@@ -6,8 +6,6 @@ const SampleDb = require("./sample-db");
 const productRoutes = require("./routes/products");
 const path = require("path");
 
-console.log(`config.DB_URI = ${config.DB_URI}`);
-
 try {
   mongoose.connect(config.DB_URI, {
     useNewUrlParser: true,
