@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const config = require('./config/dev')
 
 try {
   mongoose.connect(
-    "mongodb+srv://mingo:AheAheUhiha123@cluster0.qyc0y.mongodb.net/appDatabase?retryWrites=true&w=majority",
+    config.DB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
