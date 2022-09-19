@@ -1,5 +1,6 @@
 export const products = [
   {
+    _id: '',
     coverImage: './assets/img/phone-cover.jpg',
     name: 'Phone XL',
     price: 799,
@@ -12,6 +13,7 @@ export const products = [
     headingtext3: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.'
   },
   {
+    _id: '',
     coverImage: './assets/img/phone-cover.jpg',
     name: 'Phone Mini',
     price: 699,
@@ -24,6 +26,7 @@ export const products = [
     headingtext3: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.'
   },
   {
+    _id: '',
     coverImage: './assets/img/phone-cover.jpg',
     name: 'Phone Standard',
     price: 299,
