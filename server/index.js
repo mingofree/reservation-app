@@ -1,16 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const config = require('./config/dev')
-const SampleDb = require('./sample-db')
+const config = require("./config/dev");
+const SampleDb = require("./sample-db");
+
+const productRoutes = require("./routes/products");
 
 try {
-  mongoose.connect(
-    config.DB_URI,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  );
+  mongoose.connect(config.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   console.log("Success: Connected to MongoDB");
   const sampleDb = new SampleDb();
   sampleDb.initDb();
@@ -21,9 +20,7 @@ try {
 
 const app = express();
 
-app.get("/products", function (req, res) {
-  res.json({ success: true });
-});
+app.use('/api/v1/products', productRoutes);
 
 const PORT = process.env.PORT || "3001";
 
