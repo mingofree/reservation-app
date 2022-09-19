@@ -23,9 +23,13 @@ try {
 
 const app = express();
 
+// console.log("env = " + app.get('env'));
+// console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
+
 app.use("/api/v1/products", productRoutes);
 
-if (process.env.NODE_ENV === "production") {
+
+if (app.get('env') === "production") {
   const appPath = path.join(__dirname, "..", "dist", "sample-app");
   // console.log(appPath);
   app.use(express.static(appPath));
