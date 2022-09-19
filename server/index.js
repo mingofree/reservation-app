@@ -23,8 +23,8 @@ try {
 
 const app = express();
 
-// console.log("env = " + app.get('env'));
-// console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
+console.log("env = " + app.get('env'));
+console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
 
 app.use("/api/v1/products", productRoutes);
 
