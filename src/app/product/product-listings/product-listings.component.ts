@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { products } from 'src/app/products';
+import { ProductService } from '../shared/product.service';
 
 type Product = typeof products[0];
 
@@ -11,13 +12,15 @@ type Product = typeof products[0];
 export class ProductListComponent implements OnInit {
   products!: Product[]
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products = products;
+    this.productService.getProducts().subscribe(data => {
+      this.products = data;
+    })
   }
 
   trackFn(index: any, product: Product) {
-    return product.name;
+    return product._id;
   }
 }
