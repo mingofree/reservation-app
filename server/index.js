@@ -6,6 +6,8 @@ const SampleDb = require("./sample-db");
 const productRoutes = require("./routes/products");
 const path = require("path");
 
+console.log(`config.DB_URI = ${config.DB_URI}`);
+
 try {
   mongoose.connect(config.DB_URI, {
     useNewUrlParser: true,
@@ -23,13 +25,13 @@ try {
 
 const app = express();
 
-console.log("env = " + app.get('env'));
-console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
+// console.log("env = " + app.get('env'));
+// console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
 
 app.use("/api/v1/products", productRoutes);
 
 
-if (app.get('env') === "production") {
+if (process.env.NODE_ENV === "production") {
   const appPath = path.join(__dirname, "..", "dist", "sample-app");
   // console.log(appPath);
   app.use(express.static(appPath));
