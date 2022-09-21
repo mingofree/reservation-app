@@ -5,7 +5,11 @@
   "projects": {
     "sample-app": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -24,7 +28,10 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -92,7 +99,10 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css",
+              "src/styles.scss"
             ],
             "scripts": []
           }
