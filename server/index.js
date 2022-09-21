@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const config = require("./config");
 const SampleDb = require("./sample-db");
 
@@ -23,13 +24,13 @@ try {
 }
 
 const app = express();
+app.use(bodyParser.json());
 
 // console.log("env = " + app.get('env'));
 // console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
 
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/users", userRoutes);
-
 
 if (process.env.NODE_ENV === "production") {
   const appPath = path.join(__dirname, "..", "dist", "sample-app");
