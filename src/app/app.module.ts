@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
-
 @NgModule({
   declarations: [
     AppComponent,
