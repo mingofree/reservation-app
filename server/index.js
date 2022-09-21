@@ -4,6 +4,7 @@ const config = require("./config");
 const SampleDb = require("./sample-db");
 
 const productRoutes = require("./routes/products");
+const userRoutes = require("./routes/users");
 const path = require("path");
 
 try {
@@ -27,6 +28,7 @@ const app = express();
 // console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`)
 
 app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/users", userRoutes);
 
 
 if (process.env.NODE_ENV === "production") {
