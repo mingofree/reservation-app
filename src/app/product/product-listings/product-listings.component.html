@@ -5,7 +5,7 @@
     style="background-image: url('./assets/img/phone-cover.jpg')"
   ></div>
   <div class="container">
-    <br />  <!-- br かよ、だったら Navbar の方で sticky-top の方がいい気がする -->
+    <br />  <!-- br かよ、だったら Navbar の方で sticky-top の方がいい気がする。まぁそうしても結局隙間は必要になるが br はいただけないな -->
     <div class="row">
       <div *ngFor="let product of products; trackBy: trackFn" class="col-sm">
         <a routerLink="{{ product._id }}">
