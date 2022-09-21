@@ -1,28 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './auth.component';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './shared/auth.service';
 
-// auty/login
-// auth/register
-// となる
+// パスに auth がいらなくなる
 const routes: Routes = [
-  {
-    path: 'auth',
-    component: AuthComponent,
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-    ],
-  },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [RouterModule.forChild(routes), CommonModule],
   providers: [AuthService],
   bootstrap: [],
