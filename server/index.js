@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/users", userRoutes);
 
+// この条件がある限り開発環境では npm run start でアプリを動かせないよ
 if (process.env.NODE_ENV === "production") {
   const appPath = path.join(__dirname, "..", "dist", "sample-app");
   // console.log(appPath);
