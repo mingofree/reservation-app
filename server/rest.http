@@ -1,4 +1,22 @@
-#http://localhost:3001/api/v1/products
+# http://localhost:3001/api/v1/products
 
-#http://localhost:3001/api/v1/products/6327ea0a4e02b3a97cae1a42
+# http://localhost:3001/api/v1/products/6327ea0a4e02b3a97cae1a42
 #http://localhost:3001/api/v1/products/6327ea0a4e02b3a97cae1a
+
+# POST http://localhost:3001/api/v1/users/login
+# Content-Type: application/json
+
+# {
+# 	"email": "bar@example.com",
+# 	"password": "12345"
+# }
+
+POST http://localhost:3001/api/v1/users/register
+Content-Type: application/json
+
+{
+	"username": "hoge",
+	"email": "hoge@example.com",
+	"password": "12345",
+	"confirmPassword": "12345"
+}
