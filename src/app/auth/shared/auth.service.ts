@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { JwtHelperService } from "@auth0/angular-jwt"
 
 class DecodedToken {
   userId: string = '';
@@ -13,7 +14,7 @@ interface UserData {
   password: string;
 }
 
-// const jwt = new JwtHelperService();
+const jwt = new JwtHelperService();
 
 @Injectable()
 export class AuthService {
@@ -27,8 +28,9 @@ export class AuthService {
   login(userData: UserData): Observable<string> {
     return this.http.post<string>('/api/v1/users/login', userData).pipe(
       map((token: string) => {
-        debugger;
+        this.decodedToken = jwt.decodeToken(token)
         localStorage.setItem('app-auth', token);
+        localStorage.setItem('app-meta', JSON.stringify(this.decodedToken))
         return token;
       })
     );
