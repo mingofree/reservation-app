@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import * as moment from 'moment'
 
 class DecodedToken {
   userId: string = '';
@@ -32,6 +33,10 @@ export class AuthService {
     return localStorage.getItem('app-auth');
   }
 
+  isAuthenticated() {
+    return moment().isBefore(moment.unix(this.decodedToken.exp))
+  }
+
   register(userData: any): Observable<any> {
     return this.http.post('/api/v1/users/register', userData);
   }
@@ -40,6 +45,7 @@ export class AuthService {
     return this.http.post<string>('/api/v1/users/login', userData).pipe(
       map((token: string) => {
         this.decodedToken = jwt.decodeToken(token);
+        // console.log(moment.unix(this.decodedToken.exp).toISOString());
         localStorage.setItem('app-auth', token);
         localStorage.setItem('app-meta', JSON.stringify(this.decodedToken));
         return token;
