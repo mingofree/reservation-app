@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../model/user");
-// const jwt = require('jsonwebtoken')
-// const config = require('../config')
+const jwt = require("jsonwebtoken");
+const config = require('../config');
 
 router.post("/login", function (req, res) {
   const { email, password } = req.body;
@@ -35,14 +35,14 @@ router.post("/login", function (req, res) {
       });
     }
 
-    // const token = jwt.sign(
-    //   {
-    //     userId: foundUser.id,
-    //     username: foundUser.username,
-    //   },
-    //   config.SECRET,
-    //   { expiresIn: "1h" }
-    // );
+    const token = jwt.sign(
+      {
+        userId: foundUser.id,
+        username: foundUser.username,
+      },
+      config.SECRET,
+      { expiresIn: "1h" }
+    );
 
     return res.json(token);
   });
@@ -76,28 +76,22 @@ router.post("/register", function (req, res) {
 
   User.findOne({ email }, function (err, foundUser) {
     if (err) {
-      return res
-        .status(422)
-        .send({
-          errors: [{ title: "User error", detail: "Someting went wrong!" }],
-        });
+      return res.status(422).send({
+        errors: [{ title: "User error", detail: "Someting went wrong!" }],
+      });
     }
     if (foundUser) {
-      return res
-        .status(422)
-        .send({
-          errors: [{ title: "User error", detail: "User already exist!" }],
-        });
+      return res.status(422).send({
+        errors: [{ title: "User error", detail: "User already exist!" }],
+      });
     }
 
     const user = new User({ username, email, password });
     user.save(function (err) {
       if (err) {
-        return res
-          .status(422)
-          .send({
-            errors: [{ title: "User error", detail: "Someting went wrong!" }],
-          });
+        return res.status(422).send({
+          errors: [{ title: "User error", detail: "Someting went wrong!" }],
+        });
       }
       return res.json({ registerd: true });
     });

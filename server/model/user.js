@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 // const ObjectId = Schema.ObjectId;
 
 const UserSchema = new Schema({
@@ -22,6 +23,27 @@ const UserSchema = new Schema({
     min: [6, 'パスワードは6文字以上で入力してください'],
     max: [30, 'パスワードは最大30文字までです'],
   },
+});
+
+
+UserSchema.methods.hasSamePassword = function(inputPassword) {
+  const user = this
+  return bcrypt.compareSync(inputPassword, user.password)
+}
+
+// api/v1/users/register API が呼ばれたときに save() を呼んでいるが、その時にその直前にこちらの pre メソッドを呼び出す
+// save のミドルウェアというかトリガーというかそういう役割のメソッドが pre
+// やっていることはパスワードをハッシュ化して再セットしている
+UserSchema.pre('save', function(next) {
+  const user = this
+  const saltRounds = 10
+
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(user.password, salt, function(err, hash) {
+      user.password = hash
+      next()
+    });
+  });
 });
 
 module.exports = mongoose.model('User', UserSchema);
