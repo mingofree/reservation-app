@@ -8,6 +8,11 @@ class DecodedToken {
   exp: number = 0;
 }
 
+interface UserData {
+  email: string;
+  password: string;
+}
+
 // const jwt = new JwtHelperService();
 
 @Injectable()
@@ -19,15 +24,13 @@ export class AuthService {
     return this.http.post('/api/v1/users/register', userData);
   }
 
-  login(userData: any): Observable<any> {
-    return this.http.post('/api/v1/users/login', userData);
-    // return this.http.post('/api/v1/users/login', userData).pipe(
-      // map((token: string) => {
-      //   this.decodedToken = jwt.decodeToken(token);
-      //   localStorage.setItem('app-auth', token);
-      //   localStorage.setItem('app-meta', JSON.stringify(this.decodedToken));
-      //   return token;
-      // })
-    // );
+  login(userData: UserData): Observable<string> {
+    return this.http.post<string>('/api/v1/users/login', userData).pipe(
+      map((token: string) => {
+        debugger;
+        localStorage.setItem('app-auth', token);
+        return token;
+      })
+    );
   }
 }
