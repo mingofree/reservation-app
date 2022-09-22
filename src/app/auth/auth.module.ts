@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './shared/auth.service';
 import { AuthGuard } from './shared/auth.guard';
+import { TokenInterceptor } from './shared/token.interceptor'; 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // パスに auth がいらなくなる
 const routes: Routes = [
@@ -17,7 +19,15 @@ const routes: Routes = [
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   imports: [RouterModule.forChild(routes), CommonModule, FormsModule],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService, 
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    } 
+  ],
   bootstrap: [],
 })
 export class AuthModule {}
