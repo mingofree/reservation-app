@@ -3,13 +3,17 @@
 # http://localhost:3001/api/v1/products/6327ea0a4e02b3a97cae1a42
 #http://localhost:3001/api/v1/products/6327ea0a4e02b3a97cae1a
 
-# POST http://localhost:3001/api/v1/users/login
-# Content-Type: application/json
+GET http://localhost:3001/api/v1/products
 
-# {
-# 	"email": "bar@example.com",
-# 	"password": "12345"
-# }
+###
+
+POST http://localhost:3001/api/v1/users/login
+Content-Type: application/json
+
+{
+	"email": "bar@example.com",
+	"password": "12345"
+}
 
 POST http://localhost:3001/api/v1/users/register
 Content-Type: application/json
@@ -20,3 +24,23 @@ Content-Type: application/json
 	"password": "12345",
 	"confirmPassword": "12345"
 }
+
+###
+
+POST http://localhost:3001/api/v1/users/login
+Content-Type: application/json
+
+{
+    "email": "hoge@example.com",
+    "password": "12345"
+}
+
+###
+
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzJhY2M1NTljOWIxMzY2OGIxZmM0NmQiLCJ1c2VybmFtZSI6ImhvZ2UiLCJpYXQiOjE2NjM4Mzc3OTEsImV4cCI6MTY2Mzg0MTM5MX0.KgNnUPKgixdzPiNsHgFJbGn2ZM5rDLZmswhzI36v2Qk
+
+GET http://localhost:3001/api/v1/products/authTest
+Content-Type: application/json
+Authorization: {{token}}
+
+

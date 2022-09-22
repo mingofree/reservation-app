@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Location } from '@angular/common';
+import { AuthService } from 'src/app/auth/shared/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public location: Location,
-    private element: ElementRef // public auth: AuthService
+    private element: ElementRef,
+    public auth: AuthService
   ) {
     this.sidebarVisible = false;
   }
@@ -45,5 +47,9 @@ export class NavbarComponent implements OnInit {
     } else {
       this.sidebarClose();
     }
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }
