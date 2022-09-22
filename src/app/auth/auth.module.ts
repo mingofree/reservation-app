@@ -6,6 +6,7 @@ import { FormsModule }   from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './shared/auth.service';
+import { AuthGuard } from './shared/auth.guard';
 
 // パスに auth がいらなくなる
 const routes: Routes = [
@@ -16,7 +17,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   imports: [RouterModule.forChild(routes), CommonModule, FormsModule],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [],
 })
 export class AuthModule {}

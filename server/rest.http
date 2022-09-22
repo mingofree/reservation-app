@@ -37,7 +37,7 @@ Content-Type: application/json
 
 ###
 
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzJhY2M1NTljOWIxMzY2OGIxZmM0NmQiLCJ1c2VybmFtZSI6ImhvZ2UiLCJpYXQiOjE2NjM4MzY4MzIsImV4cCI6MTY2Mzg0MDQzMn0.uojlU21J-9meEccem9Y5GQAJioMJenHFksRxSdCCxRM
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzJhY2M1NTljOWIxMzY2OGIxZmM0NmQiLCJ1c2VybmFtZSI6ImhvZ2UiLCJpYXQiOjE2NjM4Mzc3OTEsImV4cCI6MTY2Mzg0MTM5MX0.KgNnUPKgixdzPiNsHgFJbGn2ZM5rDLZmswhzI36v2Qk
 
 GET http://localhost:3001/api/v1/products/authTest
 Content-Type: application/json
