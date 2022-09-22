@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as moment from 'moment'
+import { Router } from '@angular/router';
 
 class DecodedToken {
   userId: string = '';
@@ -20,7 +21,7 @@ const jwt = new JwtHelperService();
 @Injectable()
 export class AuthService {
   private decodedToken!: DecodedToken;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     const tmpDecodedToken = localStorage.getItem('app-meta');
     if (tmpDecodedToken) {
       this.decodedToken = JSON.parse(tmpDecodedToken);
@@ -51,5 +52,12 @@ export class AuthService {
         return token;
       })
     );
+  }
+
+  logout() {
+    localStorage.removeItem('app-auth')
+    localStorage.removeItem('app-meta')
+    this.decodedToken = new DecodedToken()
+    this.router.navigate(['/login'])
   }
 }

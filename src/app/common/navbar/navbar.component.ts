@@ -48,4 +48,8 @@ export class NavbarComponent implements OnInit {
       this.sidebarClose();
     }
   }
+
+  logout() {
+    this.auth.logout();
+  }
 }
